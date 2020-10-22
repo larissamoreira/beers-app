@@ -14,13 +14,12 @@ export const getBeersFailure = () => ({
   type: GET_BEERS_FAILURE,
 })
 
-export function fetchBeers() {
+export function fetchBeers(page = 1) {
   return async (dispatch) => {
     dispatch(getBeers())
 
     try {
-      const response = await api.get('./beers')
-
+      const response = await api.get(`./beers?page=${page}&per_page=10`)
       dispatch(getBeersSuccess(response.data))
     } catch (error) {
       dispatch(getBeersFailure())

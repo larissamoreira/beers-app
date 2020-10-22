@@ -4,6 +4,7 @@ export const initialState = {
   beers: [],
   loading: false,
   hasErrors: false,
+  next: 1
 }
 
 export default function beersReducer(state = initialState, action) {
@@ -11,7 +12,9 @@ export default function beersReducer(state = initialState, action) {
     case GET_BEERS:
       return { ...state, loading: true }
     case GET_BEERS_SUCCESS:
-      return { beers: action.payload, loading: false, hasErrors: false }
+      if (action.payload.length > 0) {
+        return { beers: action.payload, loading: false, hasErrors: false, next: state.next + 1 }
+      } else return { next: false, loading: false,  hasErrors: false}
     case GET_BEERS_FAILURE:
       return { ...state, loading: false, hasErrors: true }
     default:
