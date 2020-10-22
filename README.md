@@ -11,6 +11,7 @@ Project Roadmap:
 - [X] Implement React Routes.
 - [X] Use Redux.
 - [X] Use Redux-Thunk.
+- [ ] Use Airbnb style guide
 - [ ] Deploy APP.
 
 ## Installation
