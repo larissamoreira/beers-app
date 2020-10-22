@@ -3,14 +3,15 @@
 Project Roadmap:
 - [X] Use npm/yarn to manage app dependencies.
 - [X] Configure a React App using Webpack.
-- [ ] Create Components.
-- [ ] Display information from [API](https://punkapi.com/documentation/v2) using Axios to request the API.
+- [X] Create Components.
+- [ ] Style Components.
+- [X] Display information from [API](https://punkapi.com/documentation/v2) using Axios to request the API.
 - [ ] Implement pagination.
 - [ ] Implement Unit and Functional tests using Jest.
-- [ ] Implement React Routes
-- [ ] Use Redux
-- [ ] Use Redux-Saga
-- [ ] Deploy APP
+- [X] Implement React Routes.
+- [X] Use Redux.
+- [X] Use Redux-Thunk.
+- [ ] Deploy APP.
 
 ## Installation
 
