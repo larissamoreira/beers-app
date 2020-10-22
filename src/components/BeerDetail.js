@@ -26,7 +26,7 @@ const BeerDetail = () => {
       <p>{beer.name}</p>
       <p>{beer.tagline}</p>
       <p>{beer.description}</p>
-      <p>{beer.image_url}</p>
+      <img src={beer.image_url} />
     </div>
   )
 }
