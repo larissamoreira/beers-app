@@ -9,6 +9,7 @@ import store from './store/index'
 
 import BeerList from './components/BeerList'
 import BeerDetail from './components/BeerDetail'
+import './App.scss'
 
 const App = () => {
   return (

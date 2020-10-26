@@ -1,0 +1,51 @@
+@use '../../variables';
+
+.beersList--container {
+  height: 50vh;
+  max-width: 50vw;
+  min-width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.beersList--title {
+  font-family: $fontTitle;
+  color: $whiteColor;
+}
+
+.beersList--list {
+  height: 100%;
+  list-style: none;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: $fontBody;
+}
+
+.beersList--item--link {
+  text-decoration: none;
+  color: $whiteColor;
+}
+
+.beersList--item--link:hover {
+  text-decoration: underline;
+}
+
+.button {
+  min-width: 20%;
+  margin: auto;
+  background: none;
+  padding: 10px;
+  border: 1px solid #ff9800;
+  color: white;
+  font-weight: 700;
+}
+
+.button:hover {
+  background: #ff9800;
+  padding: 10px;
+  border: 1px solid #ff9800;
+  color: white;
+}

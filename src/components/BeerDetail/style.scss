@@ -1,0 +1,69 @@
+@use '../../variables';
+
+.container {
+  display: grid;
+  grid-gap: 20px;
+  place-items: center;
+}
+
+.goBack {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $whiteColor;
+  font-family: $fontBody;
+}
+
+.goBack:hover {
+  text-decoration: underline;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  width: 50%;
+  height: 382.51px;
+  background: $blackColor;
+  box-shadow: 1px 7px 30px 2px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  color: $whiteColor;
+}
+
+.card--image {
+  flex: 1;
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+  background: $whiteColor;
+  border-radius: 20px 0 0 20px;
+}
+
+.card--info {
+  flex: 2;
+  align-self: center;
+  padding: 0 40px;
+}
+
+.card--info--title {
+  font-weight: 700;
+  font-family: $fontTitle;
+}
+
+.card--info--tagline {
+  font-family: $fontTitle;
+  font-weight: 700;
+  font-style: italic;
+  padding-bottom: 10px;
+}
+
+.card--info--description {
+  font-family: $fontBody;
+  line-height: 20px;
+}
+
+.image {
+  align-self: center;
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}

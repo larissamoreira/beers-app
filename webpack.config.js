@@ -1,5 +1,6 @@
 const path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const { dirname } = require('path');
 
 const settings = {
   publicPath: path.join(__dirname, "public"),
@@ -38,16 +39,25 @@ module.exports = (env, options) => {
           }
         },
         {
-          test: /\.css$/,
-          exclude: /node_modules/,
-          use: [
-            { loader: 'style-loader' },
-            {
-              loader: 'css-loader', options: {
-                sourceMap: isDevMode
-              }
-            },
-          ]
+          test: /\.scss$/,
+          use: [{
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader",
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              sourceMap: true,
+              resources: [
+                path.resolve(__dirname, 'src', '_variables.scss')
+              ]
+            }
+          }]
         },
         {
           test: /\.(jpe?g|png|gif|svg|ico)$/i,
