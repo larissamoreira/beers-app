@@ -32,7 +32,7 @@ const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {
 
   return (
     <section className="beersList--container">
-      <h1 className="beersList--title">Beers</h1>
+      <h1 className="beersList--title"><i className="em em-beers"></i> Beers</h1>
       {beers && renderBeers()}
       {next &&
         <button

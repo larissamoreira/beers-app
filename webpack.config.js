@@ -1,15 +1,5 @@
 const path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const { dirname } = require('path');
-
-const settings = {
-  publicPath: path.join(__dirname, "public"),
-  srcPath: path.join(__dirname, "src")
-};
-
-function srcPathExtend(subpath) {
-  return path.join(settings.srcPath, subpath)
-}
 
 module.exports = (env, options) => {
   const isDevMode = options.mode === "development";
@@ -18,12 +8,11 @@ module.exports = (env, options) => {
     devtool: isDevMode ? "source-map" : false,
     entry: path.resolve(__dirname, 'src', 'index.js'),
     output: {
-      path: path.resolve(__dirname, 'public'),
       filename: 'bundle.js',
-      publicPath: '/'
+      path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-      contentBase: path.resolve(__dirname, 'public'),
+      contentBase: path.resolve(__dirname, 'dist'),
       historyApiFallback: true
     },
     module: {
@@ -33,9 +22,6 @@ module.exports = (env, options) => {
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-            options: {
-              sourceMap: isDevMode
-            }
           }
         },
         {
@@ -74,7 +60,7 @@ module.exports = (env, options) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: srcPathExtend("index.html")
+        template: path.resolve(__dirname, 'src', 'template.html'),
       })]
   }
 }
