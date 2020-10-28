@@ -14,7 +14,9 @@ export default function beersReducer(state = initialState, action) {
     case GET_BEERS_SUCCESS:
       if (action.payload.length > 0) {
         return { beers: {...state.beers, ...action.payload}, loading: false, hasErrors: false, next: state.next + 1 }
-      } else return { ...state, next: false}
+      } else {
+        return { ...state, next: false, hasErrors: false }
+      }
     case GET_BEERS_FAILURE:
       return { ...state, loading: false, hasErrors: true }
     default:

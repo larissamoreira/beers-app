@@ -28,7 +28,7 @@ const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {
 
   const renderBeers = () => {
     if (loading) return <p>Loading...</p>
-    if (hasErrors) return <p>Unable to display beer list.</p>
+    if (hasErrors) return <p style={{color: 'white'}}>Unable to display beer list, please refresh page.</p>
     return (
       <ul className="beersList--list">
         {Object.keys(beers).map((beer) =>
