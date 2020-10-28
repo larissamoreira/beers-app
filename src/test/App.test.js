@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 
 import App from '../App'
-import BeerList from '../components/BeerList';
+import BeerList from '../components/pages/BeerList';
 
 const mockStore = configureStore([]);
 
@@ -17,7 +17,6 @@ describe('App', () => {
     expect(screen.getByText(/Beers/i)).toBeInTheDocument();
   });
 });
-
 
 describe('BeersList', () => {
   let store;

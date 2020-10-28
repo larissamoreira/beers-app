@@ -16,10 +16,10 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/" exact>
+          <Route exact path="/">
             <BeerList />
           </Route>
-          <Route path="/beer/:id">
+          <Route path="/:id">
             <BeerDetail />
           </Route>
           <Route>

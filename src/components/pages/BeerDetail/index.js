@@ -26,7 +26,7 @@ const BeerDetail = ({ beers }) => {
     return () => { };
   }, [])
 
-  return (
+  const renderBeer = () => (
     <div className="container">
       <div className="card">
         <div className="card--image">
@@ -38,8 +38,14 @@ const BeerDetail = ({ beers }) => {
           <p className="card--info--description">{beer.description}</p>
         </div>
       </div>
-      <Button text="Go back" handleClick={handleClick}/>
+      <Button text="Go back" handleClick={handleClick} />
     </div>
+  )
+
+  return (
+    <>
+      { beer && renderBeer()}
+    </>
   )
 }
 

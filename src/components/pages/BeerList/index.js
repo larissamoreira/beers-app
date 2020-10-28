@@ -36,7 +36,7 @@ const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {
             className="beersList--item"
             key={beers[beer].id}>
             <Link
-              to={`/beer/${beers[beer].id}/`}
+              to={`/${beers[beer].id}`}
               className="beersList--item--link"
               id={beers[beer].id}>
               <p><strong>{beers[beer].name}</strong> - {beers[beer].tagline}</p>

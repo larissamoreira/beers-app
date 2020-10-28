@@ -40,7 +40,9 @@ module.exports = (env, options) => {
             options: {
               sourceMap: true,
               resources: [
-                path.resolve(__dirname, 'src', '_variables.scss')
+                path.resolve(__dirname, 'src', 'styles', '_variables.scss'),
+                path.resolve(__dirname, 'src', 'styles', '_breakpoints.scss'),
+                path.resolve(__dirname, 'src', 'styles', '_mixins.scss'),
               ]
             }
           }]

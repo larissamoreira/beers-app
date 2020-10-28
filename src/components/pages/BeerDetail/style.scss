@@ -1,4 +1,5 @@
-@use '../../variables';
+@use '../../../styles/variables';
+@use '../../../styles/mixins';
 
 .container {
   display: grid;
@@ -6,27 +7,21 @@
   place-items: center;
 }
 
-.goBack {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: $whiteColor;
-  font-family: $fontBody;
-}
-
-.goBack:hover {
-  text-decoration: underline;
-}
-
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   margin: 0 auto;
   width: 70%;
-  height: 382.51px;
-  background: $blackColor;
+  background: #353238;
   box-shadow: 1px 7px 30px 2px rgba(0, 0, 0, 0.35);
   border-radius: 20px;
-  color: $whiteColor;
+  color: #e5e5e5;
+
+  @include sm {
+    flex-direction: row;
+    height: 382.51px;
+    width: 70%;
+  }
 }
 
 .card--image {
@@ -35,13 +30,21 @@
   padding: 10px 0;
   justify-content: center;
   background: $whiteColor;
-  border-radius: 20px 0 0 20px;
+  border-radius: 0 0 20px 20px;
+
+  @include sm {
+    border-radius: 20px 0 0 20px;
+  }
 }
 
 .card--info {
   flex: 2;
   align-self: center;
-  padding: 0 40px;
+  padding: 20px;
+
+  @include sm {
+    padding: 0 40px;
+  }
 }
 
 .card--info--title {
@@ -64,6 +67,10 @@
 .image {
   align-self: center;
   object-fit: contain;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 25%;
+  
+  @include sm {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
