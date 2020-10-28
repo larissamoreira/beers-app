@@ -7,8 +7,8 @@ import {
 import { Provider } from 'react-redux'
 import store from './store/index'
 
-import BeerList from './components/BeerList'
-import BeerDetail from './components/BeerDetail'
+import BeerList from './components/pages/BeerList'
+import BeerDetail from './components/pages/BeerDetail'
 import './App.scss'
 
 const App = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
-import { fetchBeers } from '../../store/actions/beersActions'
+import { fetchBeers } from '../../../store/actions/beersActions'
 import './style.scss'
 
 const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {

@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router"
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import { getBeerDetail } from '../../services/api'
+import { useHistory } from "react-router-dom";
+import { getBeerDetail } from '../../../services/api'
+import Button from '../../Button'
 import './style.scss'
 
 const BeerDetail = ({ beers }) => {
   const { id } = useParams();
   const [beer, setBeer] = useState({});
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/");
+  }
 
   useEffect(() => {
     if (id in beers) {
@@ -32,7 +38,7 @@ const BeerDetail = ({ beers }) => {
           <p className="card--info--description">{beer.description}</p>
         </div>
       </div>
-      <Link to='/' className="goBack">Go back</Link>
+      <Button text="Go back" handleClick={handleClick}/>
     </div>
   )
 }
