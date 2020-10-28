@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
@@ -6,23 +6,40 @@ import { fetchBeers } from '../../store/actions/beersActions'
 import './style.scss'
 
 const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {
+  const firstRender = useRef(true);
+
   useEffect(() => {
-    dispatch(fetchBeers(next))
-  }, [dispatch])
+    if (firstRender.current) {
+      dispatch(fetchBeers(next))
+      firstRender.current = false;
+    }
+    handleScroll()
+  }, [])
+
+  const handleScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop + 20 >= document.documentElement.offsetHeight) {
+      if (!next || hasErrors) return;
+
+      if (!loading) dispatch(fetchBeers(next))
+    }
+  };
+
+  window.onscroll = handleScroll;
 
   const renderBeers = () => {
     if (loading) return <p>Loading...</p>
     if (hasErrors) return <p>Unable to display beer list.</p>
     return (
       <ul className="beersList--list">
-        {beers.map((beer) =>
+        {Object.keys(beers).map((beer) =>
           <li
             className="beersList--item"
-            key={beer.id}>
+            key={beers[beer].id}>
             <Link
-              to={`/beer/${beer.id}`}
-              className="beersList--item--link">
-              <p><strong>{beer.name}</strong> - {beer.tagline}</p>
+              to={`/beer/${beers[beer].id}/`}
+              className="beersList--item--link"
+              id={beers[beer].id}>
+              <p><strong>{beers[beer].name}</strong> - {beers[beer].tagline}</p>
             </Link>
           </li>
         )}
@@ -34,12 +51,6 @@ const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {
     <section className="beersList--container">
       <h1 className="beersList--title"><i className="em em-beers"></i> Beers</h1>
       {beers && renderBeers()}
-      {next &&
-        <button
-          onClick={() => dispatch(fetchBeers(next))}
-          className="button">Go to page {next}
-        </button>
-      }
     </section>
   )
 }

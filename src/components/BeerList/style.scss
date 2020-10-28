@@ -1,9 +1,10 @@
 @use '../../variables';
 
 .beersList--container {
-  height: 50vh;
+  min-height: 90vh;
   max-width: 50vw;
   min-width: 50vw;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,13 +16,15 @@
 }
 
 .beersList--list {
-  height: 100%;
   list-style: none;
   padding: 20px 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   font-family: $fontBody;
+}
+
+.beersList--item {
+  padding: 10px 0;
 }
 
 .beersList--item--link {

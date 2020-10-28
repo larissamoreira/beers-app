@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router"
-import { Link } from 'react-router-dom'
-import api from '../../services/api'
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+import { getBeerDetail } from '../../services/api'
 import './style.scss'
 
-const BeerDetail = () => {
+const BeerDetail = ({ beers }) => {
   const { id } = useParams();
   const [beer, setBeer] = useState({});
 
   useEffect(() => {
-    let unmounted = false;
-    api.get(`beers/${id}`)
-      .then(res =>
-        setBeer({
-          name: res.data[0].name,
-          id: res.data[0].id,
-          tagline: res.data[0].tagline,
-          description: res.data[0].description,
-          image_url: res.data[0].image_url
-        })
-      )
-    return () => { unmounted = true };
+    if (id in beers) {
+      setBeer(beers[id])
+    } else {
+      getBeerDetail(id)
+        .then(res => setBeer(res))
+        .catch(err => alert('Unable to display beer info.'))
+    }
+    return () => { };
   }, [])
 
   return (
@@ -40,4 +37,8 @@ const BeerDetail = () => {
   )
 }
 
-export default BeerDetail
+const mapStateToProps = state => {
+  return { beers: state.beers.beers };
+};
+
+export default connect(mapStateToProps)(BeerDetail);

@@ -22,6 +22,9 @@ const App = () => {
           <Route path="/beer/:id">
             <BeerDetail />
           </Route>
+          <Route>
+            <h1 style={{color: 'white'}}>Page not found!</h1>
+          </Route>
         </Switch>
       </Router>
     </Provider>

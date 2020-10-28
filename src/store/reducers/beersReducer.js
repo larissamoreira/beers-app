@@ -1,7 +1,7 @@
 import { GET_BEERS, GET_BEERS_SUCCESS, GET_BEERS_FAILURE } from "../types/index";
 
 export const initialState = {
-  beers: [],
+  beers: {},
   loading: false,
   hasErrors: false,
   next: 1
@@ -13,8 +13,8 @@ export default function beersReducer(state = initialState, action) {
       return { ...state, loading: true }
     case GET_BEERS_SUCCESS:
       if (action.payload.length > 0) {
-        return { beers: action.payload, loading: false, hasErrors: false, next: state.next + 1 }
-      } else return { next: false, loading: false,  hasErrors: false}
+        return { beers: {...state.beers, ...action.payload}, loading: false, hasErrors: false, next: state.next + 1 }
+      } else return { ...state, next: false}
     case GET_BEERS_FAILURE:
       return { ...state, loading: false, hasErrors: true }
     default:
