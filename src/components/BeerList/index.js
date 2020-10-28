@@ -17,7 +17,7 @@ const BeerList = ({ dispatch, loading, beers, hasErrors, next = 1 }) => {
   }, [])
 
   const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop + 20 >= document.documentElement.offsetHeight) {
+    if (window.innerHeight + document.documentElement.scrollTop + 10 >= document.documentElement.offsetHeight) {
       if (!next || hasErrors) return;
 
       if (!loading) dispatch(fetchBeers(next))

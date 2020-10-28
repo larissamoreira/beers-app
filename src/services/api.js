@@ -5,7 +5,7 @@ const api = axios.create({
 });
 
 const getBeerList = page => {
-  return api.get(`beers?page=${page}&per_page=10`)
+  return api.get(`beers?page=${page}&per_page=20`)
     .then(res => {
       if (res.data) {
         let beers = [];
